@@ -246,7 +246,7 @@ it('will log output for successful actions', function () {
         ->toHaveKey('output_log');
 });
 
-it('will log output for not-successful actions', function () {
+it('will log output for failed actions', function () {
     $result = $this->action->execute(
         $this->command, $this->input, $this->output
     );
