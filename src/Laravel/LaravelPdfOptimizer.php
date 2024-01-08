@@ -30,6 +30,6 @@ class LaravelPdfOptimizer
             $file = File::make($file, $this->disk);
         }
 
-        return new Export($file);
+        return new Export($file, config('pdf-optimizer.gs'));
     }
 }
