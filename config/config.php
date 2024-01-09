@@ -21,13 +21,15 @@ return [
     | Queue
     |--------------------------------------------------------------------------
     |
-    | Sometimes caching process is very heavy, so you have to queue the process and do it in background.
+    | Sometimes optimizing process is very heavy, so you have to queue the
+    | process and do it in background.
     |
     */
 
     'queue' => [
-        'status'     => false,
+        'enabled'    => false,
         'name'       => 'default',
-        'connection' => null
+        'connection' => null,
+        'timeout'    => 900 // seconds (15 minutes)
     ]
 ];

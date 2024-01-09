@@ -6,13 +6,15 @@ namespace Mostafaznv\PdfOptimizer\DTOs;
 class OptimizeResult
 {
     public function __construct(
-        public bool   $status,
-        public string $message = '',
+        public bool    $status,
+        public bool    $isQueued = false,
+        public ?string $queueId = null,
+        public string  $message = ''
     ) {}
 
 
-    public static function make(bool $status, string $message = ''): self
+    public static function make(bool $status, bool $isQueued = false, ?string $queueId = null, string $message = ''): self
     {
-        return new self($status, $message);
+        return new self($status, $isQueued, $queueId, $message);
     }
 }

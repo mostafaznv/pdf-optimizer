@@ -20,6 +20,6 @@
 
     <php>
         <env name="APP_NAME" value="php-optimizer-app"/>
-        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="QUEUE_CONNECTION" value="database"/>
     </php>
 </phpunit>
