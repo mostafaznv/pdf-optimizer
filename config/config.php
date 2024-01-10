@@ -16,6 +16,22 @@ return [
 
     'gs' => 'gs',
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Process Timeout
+    |--------------------------------------------------------------------------
+    |
+    | Set timeout to control how long the process should run.
+    | If the timeout is reached, a ProcessTimedOutException will be thrown.
+    |
+    | Default: 300 seconds (5 minutes)
+    |
+    */
+
+    'timeout' => 300,
+
+
     /*
     |--------------------------------------------------------------------------
     | Queue

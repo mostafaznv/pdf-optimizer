@@ -27,11 +27,12 @@ class Export
     {
         $this->file = $file;
         $this->gsBinary = $gsBinary;
+        $this->timeout = config('pdf-optimizer.timeout');
 
-        $config = config('pdf-optimizer.queue');
+        $queue = config('pdf-optimizer.queue');
 
         $this->queue = QueueData::make(
-            $config['enabled'], $config['name'], $config['connection'], $config['timeout']
+            $queue['enabled'], $queue['name'], $queue['connection'], $queue['timeout']
         );
     }
 
