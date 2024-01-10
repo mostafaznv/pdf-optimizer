@@ -1,2 +1,11 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Ignore unnecessary files to prevent from installation
+/.github export-ignore
+/docs export-ignore
+/tests export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+phpunit.xml export-ignore
+README.md export-ignore
