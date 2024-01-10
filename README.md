@@ -9,7 +9,7 @@
 
 PDF Optimizer is a powerful PHP package designed to optimize and compress PDF files effortlessly. Whether you're working on a `standalone PHP` project or a `Laravel` application, pdf-optimizer provides a seamless and efficient solution to reduce PDF file sizes using the popular `ghostscript` tool.
 
-## Features
+### Features
 - **Fluent Method Chaining:** Enjoy a fluent and expressive API for optimizing PDF files with support for nearly all ghostscript options.
 - **Laravel Integration:** Specifically tailored for Laravel applications, pdf-optimizer supports various input methods, including file `paths`, `UploadedFile`, and `disk` storage. This ensures flexibility and ease of use within the Laravel ecosystem.
 - **Queue Support:** Optimize PDF files asynchronously with Laravel queues. pdf-optimizer seamlessly integrates with Laravel's queue system for efficient background processing.
@@ -22,7 +22,7 @@ Therefore, if you decide to use my packages, please kindly consider making a don
 
 [![Donate](https://mostafaznv.github.io/donate/donate.svg)](https://mostafaznv.github.io/donate)
 
-----
+<br>
 
 
 ## Requirements:
@@ -30,38 +30,47 @@ Therefore, if you decide to use my packages, please kindly consider making a don
 - PHP 8.2 or higher
 - [Ghostscript](https://ghostscript.com/)
 
-## Installation
+<br>
 
-1. ##### Install Ghostscript
-    - **Ubuntu**
-        ```shell
-        apt-get install ghostscript
-        ```
-    - **Alpine**
-        ```shell
-        apk add --upgrade ghostscript
-        ```
-    - **MacOS**
-        ```shell
-        brew install ghostscript
-        ```
-    - **Windows** (not tested)
-        - Download and install [Ghostscript](https://www.ghostscript.com/download/gsdnld.html)
-        - Add Ghostscript to your system path
-        - Restart your computer
+## Install Ghostscript
 
-2. ##### Install the package via composer:
+**Ubuntu**
+```shell
+apt-get install ghostscript
+```
+
+**Alpine**
+```shell
+apk add --upgrade ghostscript
+```
+
+**MacOS**
+```shell
+brew install ghostscript
+```
+
+**Windows** (not tested)
+- Download and install [Ghostscript](https://www.ghostscript.com/download/gsdnld.html)
+- Add Ghostscript to your system path
+- Restart your computer
+
+<br>
+
+## Install Package
+
+1. ##### Install the package via composer:
     ```shell
     composer require mostafaznv/pdf-optimizer
     ```
 
-3. ##### Publish config file (Laravel only):
+2. ##### Publish config file (Laravel only):
     ```shell
     php artisan vendor:publish --provider="Mostafaznv\PdfOptimizer\PdfOptimizerServiceProvider"
     ```
 
-4. ##### Done
+3. ##### Done
 
+<br>
 
 ## Usage
 
