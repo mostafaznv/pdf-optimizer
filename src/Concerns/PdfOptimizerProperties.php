@@ -912,7 +912,6 @@ trait PdfOptimizerProperties
      * InDesign normally behave as if it were true with regard to placed PDF files
      * containing compressed images. That is, they do not normally uncompress and
      * recompress them, unless color conversion or downsampling takes place.
-     * Passing through JPEG images has these advantages:
      *
      * @param bool $status
      * @return PdfOptimizerProperties|PdfOptimizer
