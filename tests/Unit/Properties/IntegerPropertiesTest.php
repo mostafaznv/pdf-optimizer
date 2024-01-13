@@ -26,7 +26,7 @@ it('wont include the given option in the final script by default', function (str
 
 
 it('will include the given option in the final script', function (string $option, string $method) {
-    $number = random_int(1, 10);
+    $number = fake()->numberBetween(1, 10);
     $command = $this->optimizer->$method($number)->command();
 
     expect($command)->toContain("$option=$number");
