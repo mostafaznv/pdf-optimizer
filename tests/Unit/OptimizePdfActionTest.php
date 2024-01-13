@@ -226,10 +226,8 @@ it('will cleanup temp files after finishing process', function () {
 });
 
 it('will log output for successful actions', function () {
-    Storage::disk('s3')->put($this->input, file_get_contents(pdf()));
-
     $result = $this->action->execute(
-        $this->fullCommand, pdf(), $this->output
+        $this->fullCommand, pdf(), output()
     );
 
     $logs = $this->logger->getLogs();
