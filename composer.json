@@ -1,6 +1,6 @@
 {
     "name": "mostafaznv/pdf-optimizer",
-    "description": "PHP package to optimize PDF files",
+    "description": "PDF optimization tool for PHP and Laravel applications",
     "keywords": [
         "pdf",
         "pdf-compressor",
@@ -9,6 +9,7 @@
         "tiny-pdf",
         "laravel",
         "php",
+        "ghostscript",
         "mostafaznv"
     ],
     "license": "MIT",
