@@ -112,7 +112,7 @@ it('will delete temporary directory on __destruct', function () {
     expect(is_dir($tempDirectory))->toBeFalse();
 });
 
-it('will assume driver not-local if disk is not set', function () {
+it('will assume driver a not-local driver if disk is not set', function () {
     $disk = Disk::make();
 
     expect($disk->isLocalDisk())->toBeFalse();

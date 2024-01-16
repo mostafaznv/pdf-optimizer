@@ -3,7 +3,7 @@
 namespace Mostafaznv\PdfOptimizer\DTOs;
 
 
-class OptimizeResult
+readonly class OptimizeResult
 {
     public function __construct(
         public bool    $status,

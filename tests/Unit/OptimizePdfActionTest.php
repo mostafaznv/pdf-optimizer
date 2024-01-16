@@ -62,10 +62,9 @@ it('will overwrite input when file object is provided directly', function () {
         ->not()->toBe($file->getPath())
         ->and($this->logger->getContext())
         ->toHaveKey('input', $file->getPath());
-
 });
 
-it('will overwrite output when disk object is provided a local disk directly', function () {
+it('will overwrite output when a disk(local) object is provided through init method', function () {
     OptimizePdfAction::init()
         ->logger($this->logger)
         ->execute(
@@ -96,7 +95,7 @@ it('will overwrite output when disk object is provided a local disk directly', f
         ->toHaveKey('output', $expectedOutput);
 });
 
-it('will overwrite output when disk object is provided a remote disk directly', function () {
+it('will overwrite output when a disk(remote) object is provided through init method', function () {
     OptimizePdfAction::init()
         ->logger($this->logger)
         ->execute(
@@ -227,10 +226,8 @@ it('will cleanup temp files after finishing process', function () {
 });
 
 it('will log output for successful actions', function () {
-    Storage::disk('s3')->put($this->input, file_get_contents(pdf()));
-
     $result = $this->action->execute(
-        $this->fullCommand, pdf(), $this->output
+        $this->fullCommand, pdf(), output()
     );
 
     $logs = $this->logger->getLogs();
