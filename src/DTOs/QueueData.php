@@ -3,7 +3,7 @@
 namespace Mostafaznv\PdfOptimizer\DTOs;
 
 
-class QueueData
+readonly class QueueData
 {
     public function __construct(
         public bool    $enabled = false,
