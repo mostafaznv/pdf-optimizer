@@ -6,14 +6,12 @@ namespace Mostafaznv\PdfOptimizer\Laravel\Concerns;
 class File
 {
     private string  $path;
-    private ?string $disk;
     private Disk    $diskInstance;
 
 
     public function __construct(string $path, ?string $disk = null)
     {
         $this->path = $path;
-        $this->disk = $disk;
         $this->diskInstance = Disk::make($disk);
     }
 
