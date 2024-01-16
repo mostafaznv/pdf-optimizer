@@ -25,6 +25,8 @@
     ],
     "require": {
         "php": "^8.2",
+        "ext-fileinfo": "*",
+        "psr/log": "^3.0",
         "symfony/process": "^6.2|^7.0"
     },
     "require-dev": {
