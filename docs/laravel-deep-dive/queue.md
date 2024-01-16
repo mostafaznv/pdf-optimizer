@@ -118,6 +118,7 @@ protected $listen = [
 
 namespace App\Listeners;
 
+use Illuminate\Support\Facades\Log;
 use Mostafaznv\PdfOptimizer\Events\PdfOptimizerJobFinished;
 
 
@@ -125,10 +126,10 @@ class PdfOptimizerJobNotification
 {
     public function handle(PdfOptimizerJobFinished $event)
     {
-        info("pdf optimization finished:");
-        info("id: $event->id");
-        info("status: $event->status");
-        info("message: $event->message");
+        Log::info("pdf optimization finished:");
+        Log::info("id: $event->id");
+        Log::info("status: $event->status");
+        Log::info("message: $event->message");
     }
 }
 ```
