@@ -1,9 +1,9 @@
 # PDF Optimizer
 
-[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/mostafaznv/pdf-optimizer/run-tests.yml?branch=master&label=Build&style=flat-square&logo=github)](https://github.com/mostafaznv/pdf-optimizer/actions)
-[![Codecov branch](https://img.shields.io/codecov/c/github/mostafaznv/pdf-optimizer/master.svg?style=flat-square&logo=codecov)](https://app.codecov.io/gh/mostafaznv/pdf-optimizer)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/mostafaznv/pdf-optimizer/run-tests.yml?branch=main&label=Build&style=flat-square&logo=github)](https://github.com/mostafaznv/pdf-optimizer/actions)
+[![Codecov branch](https://img.shields.io/codecov/c/github/mostafaznv/pdf-optimizer/main.svg?style=flat-square&logo=codecov)](https://app.codecov.io/gh/mostafaznv/pdf-optimizer)
 [![Quality Score](https://img.shields.io/scrutinizer/g/mostafaznv/pdf-optimizer.svg?style=flat-square)](https://scrutinizer-ci.com/g/mostafaznv/pdf-optimizer)
-[![GitHub license](https://img.shields.io/github/license/mostafaznv/pdf-optimizer?style=flat-square)](https://github.com/mostafaznv/pdf-optimizer/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/mostafaznv/pdf-optimizer?style=flat-square)](https://github.com/mostafaznv/pdf-optimizer/blob/main/LICENSE)
 [![Packagist Downloads](https://img.shields.io/packagist/dt/mostafaznv/pdf-optimizer?style=flat-square&logo=packagist)](https://packagist.org/packages/mostafaznv/pdf-optimizer)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/mostafaznv/pdf-optimizer.svg?style=flat-square&logo=composer)](https://packagist.org/packages/mostafaznv/pdf-optimizer)
 
