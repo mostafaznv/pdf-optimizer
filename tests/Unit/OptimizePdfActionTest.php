@@ -11,9 +11,7 @@ beforeEach(function () {
     $this->logger = new TestLogger;
     $this->action = app(OptimizePdfAction::class)->logger($this->logger);
 
-    $this->mainCommands = ['gs', '-sDEVICE=pdfwrite', '-dNOPAUSE', '-dQUIET', '-dBATCH'];
-    $this->command = ['-dPDFSETTINGS=/screen'];
-    $this->fullCommand = array_merge($this->mainCommands, $this->command);
+    $this->command = ['gs', '-sDEVICE=pdfwrite', '-dNOPAUSE', '-dQUIET', '-dBATCH', '-dPDFSETTINGS=/screen'];
     $this->input = 'input.pdf';
     $this->output = 'output.pdf';
 
@@ -171,7 +169,7 @@ it('will store files to remote disks', function () {
     $result = OptimizePdfAction::init(outputDisk: $disk)
         ->logger($this->logger)
         ->execute(
-            $this->fullCommand, pdf(), $this->output
+            $this->command, pdf(), $this->output
         );
 
     $diskFiles = $disk->getAdapter()->allFiles();
@@ -207,7 +205,7 @@ it('will cleanup temp files after finishing process', function () {
     $result = OptimizePdfAction::init($file, $outputDisk)
         ->logger($this->logger)
         ->execute(
-            $this->fullCommand, pdf(), $this->output
+            $this->command, pdf(), $this->output
         );
 
     $allFiles = Storage::disk($disk)->allFiles();
@@ -227,7 +225,7 @@ it('will cleanup temp files after finishing process', function () {
 
 it('will log output for successful actions', function () {
     $result = $this->action->execute(
-        $this->fullCommand, pdf(), output()
+        $this->command, pdf(), output()
     );
 
     $logs = $this->logger->getLogs();

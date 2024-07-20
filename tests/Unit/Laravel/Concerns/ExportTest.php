@@ -38,8 +38,16 @@ it('can set custom gs binary', function () {
     $result = $this->export->optimize($this->output);
     expect($result->status)->toBeTrue();
 
-    $result = $this->export->setGsBinary('corrupted-gs')->optimize($this->output);
-    expect($result->status)->toBeFalse();
+    try {
+        $result = $this->export->setGsBinary('corrupted-gs')->optimize($this->output);
+
+        expect($result->status)->toBeFalse();
+    }
+    catch (Exception $e) {
+        expect($e->getMessage())
+            ->toContain('No such file or directory')
+            ->toContain('corrupted-gs');
+    }
 });
 
 it('can set logger class', function () {

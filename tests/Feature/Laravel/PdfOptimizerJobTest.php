@@ -127,7 +127,6 @@ test('will fail', function () {
     $logPath = 'input.txt';
 
     PdfOptimizer::open('invalid-file.pdf')
-        ->setGsBinary('corrupted-gs')
         ->logger(new JobTestLogger($disk, $logPath))
         ->optimize($this->outputRealPath);
 
@@ -139,7 +138,9 @@ test('will fail', function () {
     $file = Storage::disk($disk)->get($logPath);
     $logs = explode("\n", $file);
 
-    expect($logs)->toContain('Job finished with error.');
+    expect($logs)
+        ->toContain('Job finished with error.')
+        ->not->toContain('Job finished successfully.');
 });
 
 
