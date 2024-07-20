@@ -161,28 +161,33 @@ it('wont overwrite input/output options in the final command list if they are al
         ->not->toContain($this->input);
 });
 
-it('will store files to remote disks', function () {
+it('will store files to remote disks', function (string $prefix) {
     $disk = Disk::make('s3');
+    $output = $prefix . $this->output;
 
     expect($disk->getAdapter()->allFiles())->toHaveCount(0);
 
     $result = OptimizePdfAction::init(outputDisk: $disk)
         ->logger($this->logger)
         ->execute(
-            $this->command, pdf(), $this->output
+            $this->command, pdf(), $output
         );
 
     $diskFiles = $disk->getAdapter()->allFiles();
+    $output = ltrim($output, '/');
 
     expect($result->status)
         ->toBeTrue()
         ->and($diskFiles)
         ->toHaveCount(1)
-        ->toContain($this->output);
-});
+        ->toContain($output);
+})->with([
+    '', 'prefix/', '/prefix/', 'prefix1/prefix2/'
+]);
 
-it('will cleanup temp files after finishing process', function () {
+it('will cleanup temp files after finishing process', function (string $prefix) {
     $disk = 's3';
+    $output = $prefix . $this->output;
     Storage::disk($disk)->put($this->input, file_get_contents(pdf()));
 
     $file = File::make($this->input, $disk);
@@ -205,7 +210,7 @@ it('will cleanup temp files after finishing process', function () {
     $result = OptimizePdfAction::init($file, $outputDisk)
         ->logger($this->logger)
         ->execute(
-            $this->command, pdf(), $this->output
+            $this->command, pdf(), $output
         );
 
     $allFiles = Storage::disk($disk)->allFiles();
@@ -221,7 +226,9 @@ it('will cleanup temp files after finishing process', function () {
         ->toHaveCount(0)
         ->and($outputDiskAllTempFiles)
         ->toHaveCount(0);
-});
+})->with([
+    '', 'prefix/', '/prefix/', 'prefix1/prefix2/'
+]);
 
 it('will log output for successful actions', function () {
     $result = $this->action->execute(
