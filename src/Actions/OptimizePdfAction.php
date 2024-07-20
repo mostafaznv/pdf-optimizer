@@ -64,7 +64,7 @@ class OptimizePdfAction
 
         return OptimizeResult::make(
             status: $status,
-            message: !$status ? $process->getErrorOutput() : ''
+            message: !$status ? "error: {$process->getErrorOutput()}" : ''
         );
     }
 
