@@ -19,7 +19,6 @@ use Mostafaznv\PdfOptimizer\Enums\UCRandBGInfo;
 use Mostafaznv\PdfOptimizer\PdfOptimizer;
 
 
-
 trait PdfOptimizerProperties
 {
     /**
@@ -1239,7 +1238,7 @@ trait PdfOptimizerProperties
     {
         $this->extraOptions = $options;
 
-        return  $this;
+        return $this;
     }
 
     /**
