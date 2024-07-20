@@ -82,10 +82,21 @@ class OptimizePdfAction
         if ($this->file) {
             $input = $this->file->getLocalPath();
         }
+
         if ($this->outputDisk?->getAdapter()) {
-            $output = $this->outputDisk->isLocalDisk()
-                ? $this->outputDisk->getAdapter()->path($output)
-                : $this->outputDisk->getTemporaryDisk()->path($output);
+            $output = ltrim($output, '/');
+            $dirname = pathinfo($output, PATHINFO_DIRNAME);
+
+            $disk = $this->outputDisk->isLocalDisk()
+                ? $this->outputDisk->getAdapter()
+                : $this->outputDisk->getTemporaryDisk();
+
+
+            if ($dirname != '.' and !$disk->directoryExists($dirname)) {
+                $disk->makeDirectory($dirname);
+            }
+
+            $output = $disk->path($output);
         }
 
         $this->logger->info("Input: $input", [

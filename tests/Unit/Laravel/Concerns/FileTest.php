@@ -105,20 +105,26 @@ it('will delete temporary disk', function () {
 });
 
 it('will delete temporary directory on __destruct', function () {
-    $disk = 's3';
-    $path = 'path/to/file.pdf';
+    $localPath = '';
 
-    Storage::fake($disk);
-    Storage::disk($disk)->put(
-        $path,
-        UploadedFile::fake()->create('file.pdf', 1000, 'application/pdf')
-    );
+    function t(): void
+    {
+        $disk = 's3';
+        $path = 'path/to/file.pdf';
 
-    $file = File::make($path, $disk);
-    $localPath = $file->getLocalPath();
+        Storage::fake($disk);
+        Storage::disk($disk)->put(
+            $path,
+            UploadedFile::fake()->create('file.pdf', 1000, 'application/pdf')
+        );
 
-    expect(file_exists($localPath))->toBeTrue();
+        $file = File::make($path, $disk);
+        $localPath = $file->getLocalPath();
 
-    unset($file);
+        expect(file_exists($localPath))->toBeTrue();
+    }
+
+    t();
+
     expect(file_exists($localPath))->toBeFalse();
 });
