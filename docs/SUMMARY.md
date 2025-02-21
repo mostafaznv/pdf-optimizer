@@ -12,7 +12,7 @@
 * [Standalone PHP](basic-usage/standalone-php.md)
 * [Laravel](basic-usage/laravel.md)
 
-## ⚙ Advanced Usage
+## ⚙️ Advanced Usage
 
 * [Ghostscript Binary Configuration](advanced-usage/ghostscript-binary-configuration.md)
 * [Timeout](advanced-usage/timeout.md)
