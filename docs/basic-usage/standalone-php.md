@@ -1,6 +1,6 @@
 # Standalone PHP
 
-Optimizing and compressing PDF files in your PHP applications is a breeze with the PhpOptimizer class. This class provides a simple and effective way to enhance the performance of your PDFs while minimizing file sizes.
+Optimizing and compressing PDF files in your PHP applications is a breeze with the PdfOptimizer class. This class provides a simple and effective way to enhance the performance of your PDFs while minimizing file sizes.
 
 
 
