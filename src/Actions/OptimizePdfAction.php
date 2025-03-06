@@ -27,7 +27,7 @@ class OptimizePdfAction
         $this->logger(new PdfOptimizerLogger);
     }
 
-    public static function init(File $file = null, Disk $outputDisk = null): self
+    public static function init(?File $file = null, ?Disk $outputDisk = null): self
     {
         return new self($file, $outputDisk);
     }
