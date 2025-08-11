@@ -13,6 +13,7 @@ jobs:
         laravel: [10.*, 11.*, 12.*]
         coverage: [none]
         dependency-version: [prefer-stable]
+        ghostscript: [9, 10]
         include:
           - laravel: 10.*
             testbench: 8.*
@@ -21,14 +22,24 @@ jobs:
           - laravel: 12.*
             testbench: 10.*
 
-    name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} - ${{ matrix.os }} - ${{ matrix.dependency-version }}
+    name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} - ${{ matrix.os }} - Ghostscript ${{ matrix.ghostscript }}
 
     steps:
       - name: Update apt
         run: sudo apt-get update --fix-missing
 
-      - name: Install ghostscript
-        run: sudo apt-get install -y ghostscript
+      - name: Install ghostscript ${{ matrix.ghostscript }}
+        run: |
+          sudo apt-get remove -y ghostscript
+          if [ "${{ matrix.ghostscript }}" = "9" ]; then
+            sudo apt-get install -y ghostscript=9.* || \
+            (sudo add-apt-repository ppa:ubuntuhandbook1/ghostscript -y && sudo apt-get update && sudo apt-get install -y ghostscript=9.*)
+          else
+            sudo apt-get install -y ghostscript
+          fi
+
+      - name: Check Ghostscript version
+        run: gs --version
 
       - name: Checkout code
         uses: actions/checkout@v4
