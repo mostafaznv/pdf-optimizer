@@ -13,7 +13,6 @@ jobs:
         laravel: [10.*, 11.*, 12.*]
         coverage: [none]
         dependency-version: [prefer-stable]
-        ghostscript: [9, 10]
         include:
           - laravel: 10.*
             testbench: 8.*
@@ -21,22 +20,19 @@ jobs:
             testbench: 9.*
           - laravel: 12.*
             testbench: 10.*
+          - php: 8.2
+            laravel: 10.*
+            testbench: 8.*
+            os: ubuntu-20.04
 
-    name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} - ${{ matrix.os }} - Ghostscript ${{ matrix.ghostscript }}
+    name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} - ${{ matrix.os }}
 
     steps:
       - name: Update apt
         run: sudo apt-get update --fix-missing
 
-      - name: Install ghostscript ${{ matrix.ghostscript }}
-        run: |
-          sudo apt-get remove -y ghostscript
-          if [ "${{ matrix.ghostscript }}" = "9" ]; then
-            sudo apt-get install -y ghostscript=9.* || \
-            (sudo add-apt-repository ppa:ubuntuhandbook1/ghostscript -y && sudo apt-get update && sudo apt-get install -y ghostscript=9.*)
-          else
-            sudo apt-get install -y ghostscript
-          fi
+      - name: Install ghostscript
+        run: sudo apt-get install -y ghostscript
 
       - name: Check Ghostscript version
         run: gs --version
