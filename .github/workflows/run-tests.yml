@@ -60,6 +60,9 @@ jobs:
           composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --dev --no-interaction
           composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
 
+      - name: Check Laravel version
+        run: php artisan --version
+
       - name: Execute tests
         run: composer test:ci
 
