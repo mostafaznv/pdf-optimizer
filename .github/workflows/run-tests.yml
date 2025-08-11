@@ -23,7 +23,7 @@ jobs:
           - php: 8.2
             laravel: 10.*
             testbench: 8.*
-            os: ubuntu-20.04
+            os: ubuntu-22.04
 
     name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} - ${{ matrix.os }}
 
