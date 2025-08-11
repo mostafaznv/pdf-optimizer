@@ -61,7 +61,10 @@ jobs:
           composer update --${{ matrix.dependency-version }} --prefer-dist --no-interaction --no-suggest
 
       - name: Check Laravel version
-        run: php artisan --version
+        run: composer show -i | grep laravel/framework
+
+      - name: Check Testbench version
+        run: composer show -i | grep orchestra/testbench
 
       - name: Execute tests
         run: composer test:ci
