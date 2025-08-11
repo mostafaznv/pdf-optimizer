@@ -3,7 +3,7 @@
 ### Requirements:
 
 * PHP 8.2 or higher
-* [Ghostscript](https://ghostscript.com)
+* [Ghostscript](https://ghostscript.com) 9 or 10
 
 
 
