@@ -27,10 +27,11 @@ You can find installation instructions and detailed instructions on how to use t
 
 <br>
 
-### License Notice
+> [!WARNING]
+> #### License Notice
 > This package is licensed under the [MIT](LICENSE) License.
 > 
-> It **does not** include the `Ghostscript`. However, it requires Ghostscript to be installed on the server in order to function. Ghostscript is licensed separately under the **AGPL** or a **commercial license** from Artifex.
+> It **does not** include the Ghostscript. However, it requires Ghostscript to be installed on the server in order to function. Ghostscript is licensed separately under the **AGPL** or a **commercial license** from Artifex.
 If you choose the AGPL version of Ghostscript, you **must** comply with the AGPL terms in your own application.
 > 
 > Please ensure you have the appropriate Ghostscript license for your use case.
