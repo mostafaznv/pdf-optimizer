@@ -48,7 +48,7 @@ trait ExportsScript
         return $command;
     }
 
-    public function toString(string $pathToFile = null, string $pathToOptimizedFile = null): string
+    public function toString(?string $pathToFile = null, ?string $pathToOptimizedFile = null): string
     {
         return implode(' ', $this->command($pathToFile, $pathToOptimizedFile));
     }
