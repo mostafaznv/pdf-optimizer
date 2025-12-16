@@ -9,7 +9,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        php: [8.2, 8.3, 8.4]
+        php: [8.2, 8.3, 8.4, 8.5]
         laravel: [10.*, 11.*, 12.*]
         coverage: [none]
         dependency-version: [prefer-stable]
@@ -24,6 +24,10 @@ jobs:
             laravel: 10.*
             testbench: 8.*
             os: ubuntu-22.04
+        exclude:
+          - laravel: 10.*
+            php: 8.5
+
 
     name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} - ${{ matrix.os }}
 
@@ -65,6 +69,9 @@ jobs:
 
       - name: Check Testbench version
         run: composer show -i | grep orchestra/testbench
+
+      - name: Check Pest version
+        run: composer show -i | grep pestphp/pest
 
       - name: Execute tests
         run: composer test:ci
