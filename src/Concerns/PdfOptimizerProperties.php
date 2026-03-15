@@ -2,6 +2,7 @@
 
 namespace Mostafaznv\PdfOptimizer\Concerns;
 
+use Mostafaznv\PdfOptimizer\Attributes\Flag;
 use Mostafaznv\PdfOptimizer\Attributes\Option;
 use Mostafaznv\PdfOptimizer\Enums\AutoRotatePages;
 use Mostafaznv\PdfOptimizer\Enums\ColorConversionStrategy;
@@ -10,6 +11,7 @@ use Mostafaznv\PdfOptimizer\Enums\ColorImageDownSampleType;
 use Mostafaznv\PdfOptimizer\Enums\ImageFilter;
 use Mostafaznv\PdfOptimizer\Enums\CompatibilityLevel;
 use Mostafaznv\PdfOptimizer\Enums\DefaultRenderingIntent;
+use Mostafaznv\PdfOptimizer\Enums\Device;
 use Mostafaznv\PdfOptimizer\Enums\GrayImageDownSampleType;
 use Mostafaznv\PdfOptimizer\Enums\MonoImageDownSampleType;
 use Mostafaznv\PdfOptimizer\Enums\MonoImageFilter;
@@ -24,15 +26,19 @@ trait PdfOptimizerProperties
     /**
      * @var string[]
      */
-    private array $options = [
-        '-sDEVICE=pdfwrite', '-dNOPAUSE', '-dQUIET', '-dBATCH'
-    ];
-
-    /**
-     * @var string[]
-     */
     private array $extraOptions = [];
 
+    #[Option('-sDEVICE')]
+    protected Device $device = Device::PDFWRITE;
+
+    #[Flag('-dNOPAUSE')]
+    protected bool $nopause = true;
+
+    #[Flag('-dQUIET')]
+    protected bool $quiet = true;
+
+    #[Flag('-dBATCH')]
+    protected bool $batch = true;
 
     #[Option('-dPDFSETTINGS')]
     private PdfSettings $pdfSettings = PdfSettings::SCREEN;
@@ -197,6 +203,21 @@ trait PdfOptimizerProperties
     private ?DefaultRenderingIntent $defaultRenderingIntent = null;
 
     private int $timeout = 300;
+
+    /**
+     * #### Quiet
+     *
+     * Suppresses routine information comments on standard output. This is currently necessary when redirecting device output to standard output.
+     *
+     * @param bool $quiet
+     * @return PdfOptimizerProperties|PdfOptimizer
+     */
+    public function quiet(bool $quiet): self
+    {
+        $this->quiet = $quiet;
+
+        return $this;
+    }
 
 
     /**
@@ -1142,6 +1163,23 @@ trait PdfOptimizerProperties
     public function processColorModel(ProcessColorModel $model): self
     {
         $this->processColorModel = $model;
+
+        return $this;
+    }
+
+    /**
+     * #### device
+     *
+     * Selects an alternate initial output device.
+     *
+     * Ghostscript has a notion of ‘output devices’ which handle saving or displaying the results in a particular format. Ghostscript comes with a diverse variety of such devices supporting vector and raster file output, screen display, driving various printers and communicating with other applications.
+     *
+     * @param Device $device
+     * @return PdfOptimizerProperties|PdfOptimizer
+     */
+    public function device(Device $device): self
+    {
+        $this->device = $device;
 
         return $this;
     }
