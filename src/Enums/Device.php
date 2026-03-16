@@ -10,11 +10,11 @@ enum Device: string
      */
 
     /** EPS output (like PostScript Distillery) */
-    case EPSWRITE = 'epswrite';
+    case EPSWRITE = 'eps2write';
     /** PDF output (like Adobe Acrobat Distiller) */
     case PDFWRITE = 'pdfwrite';
     /** PostScript output (like PostScript Distillery) */
-    case PSWRITE = 'pswrite';
+    case PSWRITE = 'ps2write';
     /** Black-and-white PCL XL */
     case PXLMONO = 'pxlmono';
     /** Color PCL XL */
