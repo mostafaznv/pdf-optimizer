@@ -3,6 +3,7 @@
 namespace Mostafaznv\PdfOptimizer\Concerns;
 
 use BackedEnum;
+use Mostafaznv\PdfOptimizer\Attributes\Flag;
 use Mostafaznv\PdfOptimizer\Attributes\Option;
 use ReflectionClass;
 
@@ -11,11 +12,10 @@ trait ExportsScript
 {
     public function command(?string $pathToFile = null, ?string $pathToOptimizedFile = null): array
     {
-        $options = $this->options;
+        $options = [];
         $reflection = new ReflectionClass($this);
 
         foreach ($reflection->getProperties() as $property) {
-            $attributes = $property->getAttributes(Option::class);
             $value = $property->getValue($this);
 
             if (is_null($value)) {
@@ -24,6 +24,15 @@ trait ExportsScript
 
             $value = is_a($value, BackedEnum::class) ? $value->value : $value;
 
+            $attributes = $property->getAttributes(Flag::class);
+            foreach ($attributes as $attribute) {
+                if ($value == true) {
+                    $instance = $attribute->newInstance();
+                    $options[] = $instance->name;
+                }
+            }
+
+            $attributes = $property->getAttributes(Option::class);
             foreach ($attributes as $attribute) {
                 $instance = $attribute->newInstance();
 
